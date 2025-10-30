@@ -1,0 +1,4 @@
+{"level":"info","msg":"time=\"2025-10-30T23:30:22+08:00\" level=info msg=\"GET /health\"","time":"2025-10-30T23:30:22+08:00"}
+{"level":"info","msg":"time=\"2025-10-30T23:30:35+08:00\" level=info msg=\"[API服务器] [Message]:正在关闭...\"","time":"2025-10-30T23:30:35+08:00"}
+{"level":"info","msg":"time=\"2025-10-30T23:30:35+08:00\" level=info msg=\"[API服务器] [Message]:服务器已启动,监听端口:8080\"","time":"2025-10-30T23:30:35+08:00"}
+{"level":"info","msg":"time=\"2025-10-30T23:30:35+08:00\" level=info msg=\"[API服务器] [Message]:服务器已退出\"","time":"2025-10-30T23:30:35+08:00"}
