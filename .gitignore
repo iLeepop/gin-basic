@@ -1,0 +1,76 @@
+# Binaries & build output
+/bin/
+/build/
+/dist/
+/out/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go workspace & module cache (local only)
+/vendor/
+
+# Test & coverage
+coverage.out
+coverage.html
+*.coverprofile
+profile.cov
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Logs & runtime files
+/logs/
+*.log
+*.Log
+
+# Local config overrides (keep conf/config.yml in repo)
+/conf/config.local.yml
+/conf/*.local.yml
+
+# IDE & editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Debug & profiling
+debug
+__debug_bin
+*.prof
+*.pprof
+cpu.out
+mem.out
+
+# Temporary files
+/tmp/
+/temp/
+*.tmp
+*.bak
+
+# Air / live reload (if used later)
+/tmp/main
+.air.toml.local
+
+# Docker local overrides (if used later)
+docker-compose.override.yml

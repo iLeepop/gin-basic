@@ -7,6 +7,8 @@ import (
 )
 
 func NewRouter(c *Container) *gin.Engine {
+	// gin.SetMode(gin.ReleaseMode)
+
 	app := gin.Default()
 
 	router := app.Group("/api")
