@@ -380,4 +380,4 @@ A: 将 `go.mod` 中的 `module gin-basic` 改为你的模块路径，并全局�
 
 ## License
 
-MIT（可按需修改）
+WTFPL
