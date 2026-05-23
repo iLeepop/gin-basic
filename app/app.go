@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"gin-basic/internal/bootstrap"
 	"gin-basic/utils/logger"
+	"net"
 	"net/http"
 	"os/signal"
 	"syscall"
@@ -31,17 +32,22 @@ func Run() {
 		Handler: app,
 	}
 
+	ln, err := net.Listen("tcp", srv.Addr)
+	if err != nil {
+		logger.Log.Fatalf("[API服务器] [故障] [Message]:监听端口失败: %s, 错误: %v", port, err)
+	}
+	logger.Log.Infof("[API服务器] [Message]:服务器已启动, 监听端口:%s", port)
+
 	go func() {
-		if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
-			logger.Log.Fatalf("[API服务器] [故障] [Message]:错误信息: %s\n", err)
-		} else {
-			logger.Log.Infof("[API服务器] [Message]:服务器已启动,监听端口:%s", port)
+		if err := srv.Serve(ln); err != nil && !errors.Is(err, http.ErrServerClosed) {
+			logger.Log.Fatalf("[API服务器] [故障] [Message]:运行异常: %v", err)
 		}
 	}()
 
 	<-ctx.Done()
 
 	stop()
+	c.CloseInfras()
 	logger.Log.Infoln("[API服务器] [Message]:正在关闭...")
 
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)

@@ -2,6 +2,8 @@ package bootstrap
 
 import (
 	"gin-basic/internal/cfg"
+	"gin-basic/internal/ports/icache"
+	"gin-basic/internal/ports/idb"
 	"gin-basic/internal/ports/iservice"
 	"gin-basic/internal/utils"
 	"gin-basic/internal/web"
@@ -11,6 +13,11 @@ import (
 type Container struct {
 	// 配置
 	Config *cfg.Configuration
+
+	// 基础设施
+	MySQL      idb.IMySQL
+	PostgreSQL idb.IPostgreSQL
+	Redis      icache.IRedis
 
 	// 工具
 	JwtUtils *utils.JwtUtils
@@ -25,9 +32,9 @@ type Container struct {
 func NewContainer() *Container {
 	c := &Container{}
 
-	c.Init()
-
 	buildConfig(c)
+	c.Init()
+	buildInfras(c)
 	buildUtils(c)
 	buildService(c)
 	buildController(c)
@@ -36,6 +43,5 @@ func NewContainer() *Container {
 }
 
 func (c *Container) Init() {
-	// 初始化 logger
 	logger.InitLogger(c.Config)
 }

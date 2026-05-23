@@ -37,8 +37,16 @@ type Log struct {
 
 // 数据库配置
 type Database struct {
-	Mysql      Mysql      `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
-	PostgreSQL PostgreSQL `mapstructure:"postgresql" json:"postgresql" yaml:"postgresql"`
+	ConnectPool ConnectPool `mapstructure:"connect_pool" json:"connect_pool" yaml:"connect_pool"`
+	Mysql       Mysql       `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
+	PostgreSQL  PostgreSQL  `mapstructure:"postgresql" json:"postgresql" yaml:"postgresql"`
+}
+
+// 连接池配置
+type ConnectPool struct {
+	MaxOpenConns    int `mapstructure:"max_open_conns" json:"max_open_conns" yaml:"max_open_conns"`
+	MaxIdleConns    int `mapstructure:"max_idle_conns" json:"max_idle_conns" yaml:"max_idle_conns"`
+	ConnMaxLifetime int `mapstructure:"conn_max_lifetime" json:"conn_max_lifetime" yaml:"conn_max_lifetime"`
 }
 
 // 缓存配置
@@ -52,6 +60,7 @@ type Mysql struct {
 	Port     string `mapstructure:"port" json:"port" yaml:"port"`
 	Username string `mapstructure:"username" json:"username" yaml:"username"`
 	Password string `mapstructure:"password" json:"password" yaml:"password"`
+	Database string `mapstructure:"database" json:"database" yaml:"database"`
 }
 
 // postgresql 配置
@@ -60,6 +69,7 @@ type PostgreSQL struct {
 	Port     string `mapstructure:"port" json:"port" yaml:"port"`
 	Username string `mapstructure:"username" json:"username" yaml:"username"`
 	Password string `mapstructure:"password" json:"password" yaml:"password"`
+	Database string `mapstructure:"database" json:"database" yaml:"database"`
 }
 
 // redis 配置
