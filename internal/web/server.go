@@ -2,13 +2,13 @@ package web
 
 import (
 	"gin-basic/internal/core"
-	"gin-basic/internal/ports/service"
+	"gin-basic/internal/ports/iservice"
 
 	"github.com/gin-gonic/gin"
 )
 
 type ServerController struct {
-	ServerService service.IServerService
+	ServerService iservice.IServerService
 }
 
 func (c *ServerController) HealthCheck(ctx *gin.Context) {

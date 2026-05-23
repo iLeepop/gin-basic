@@ -1,4 +1,4 @@
-package server_impl
+package server
 
 type ServerService struct{}
 

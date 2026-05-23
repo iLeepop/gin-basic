@@ -6,7 +6,7 @@ app:
     host: "192.168.0.10"
     port: 8080
 
-Log:
+log:
   level: "info" # 日志级别 debug/info/warn/error/fatal
   format: "json" # 日志格式
   output: "both" # 输出方式
@@ -26,3 +26,6 @@ redis:
   host: "localhost"
   port: 6379
   password: |
+
+jwt:
+  secret: "custom_secret"

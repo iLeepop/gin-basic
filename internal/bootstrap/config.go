@@ -1,7 +1,11 @@
 package bootstrap
 
-import "gin-basic/config"
+import (
+	"gin-basic/config"
+	"gin-basic/internal/cfg"
+)
 
 func buildConfig(c *Container) {
-	c.Config = config.GetConfig()
+	cfg := config.GetConfig[cfg.Configuration]()
+	c.Config = cfg.Config
 }

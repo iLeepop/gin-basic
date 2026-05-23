@@ -2,3 +2,7 @@
 {"level":"info","msg":"time=\"2025-10-30T23:30:35+08:00\" level=info msg=\"[API服务器] [Message]:正在关闭...\"","time":"2025-10-30T23:30:35+08:00"}
 {"level":"info","msg":"time=\"2025-10-30T23:30:35+08:00\" level=info msg=\"[API服务器] [Message]:服务器已启动,监听端口:8080\"","time":"2025-10-30T23:30:35+08:00"}
 {"level":"info","msg":"time=\"2025-10-30T23:30:35+08:00\" level=info msg=\"[API服务器] [Message]:服务器已退出\"","time":"2025-10-30T23:30:35+08:00"}
+{"level":"info","msg":"time=\"2026-05-23T17:41:37+08:00\" level=info msg=\"http access\" client_ip=\"::1\" content_length=0 latency_ms=0 method=GET path=/api/health query= response_size=44 status=200 trace_id=1779529297224e02ce0e2 user_agent=\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36\"","time":"2026-05-23T17:41:37+08:00"}
+{"level":"info","msg":"time=\"2026-05-23T17:41:48+08:00\" level=info msg=\"[API服务器] [Message]:正在关闭...\"","time":"2026-05-23T17:41:48+08:00"}
+{"level":"info","msg":"time=\"2026-05-23T17:41:48+08:00\" level=info msg=\"[API服务器] [Message]:服务器已启动,监听端口:8080\"","time":"2026-05-23T17:41:48+08:00"}
+{"level":"info","msg":"time=\"2026-05-23T17:41:48+08:00\" level=info msg=\"[API服务器] [Message]:服务器已退出\"","time":"2026-05-23T17:41:48+08:00"}

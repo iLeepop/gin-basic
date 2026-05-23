@@ -2,7 +2,7 @@ package logger
 
 import (
 	"context"
-	"gin-basic/config"
+	"gin-basic/internal/cfg"
 	"gin-basic/internal/pkg/trace"
 	"io"
 	"os"
@@ -37,9 +37,8 @@ func (h *fileHook) Levels() []logrus.Level {
 	return logrus.AllLevels
 }
 
-func InitLogger() *logrus.Logger {
+func InitLogger(cfg *cfg.Configuration) *logrus.Logger {
 	once.Do(func() {
-		cfg := config.GetConfig()
 		Log = logrus.New()
 		//Log.SetOutput(os.Stdout)
 
@@ -74,10 +73,10 @@ func InitLogger() *logrus.Logger {
 		if output == "file" || output == "both" {
 			rotateLogger := &lumberjack.Logger{
 				Filename:   filePath,
-				MaxSize:    viper.GetInt("logger.max_size"),    // MB
-				MaxBackups: viper.GetInt("logger.max_backups"), // 个数
-				MaxAge:     viper.GetInt("logger.max_age"),     // 天
-				Compress:   viper.GetBool("logger.compress"),   // 是否压缩
+				MaxSize:    viper.GetInt("log.max_size"),    // MB
+				MaxBackups: viper.GetInt("log.max_backups"), // 个数
+				MaxAge:     viper.GetInt("log.max_age"),     // 天
+				Compress:   viper.GetBool("log.compress"),   // 是否压缩
 			}
 
 			fileLogger.SetOutput(rotateLogger)

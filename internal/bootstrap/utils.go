@@ -7,7 +7,7 @@ import (
 
 func buildUtils(c *Container) {
 	c.JwtUtils = &utils.JwtUtils{
-		Secret:   "custom_secret",
+		Secret:   c.Config.Jwt.Secret,
 		TokenTTL: 1 * time.Hour,
 	}
 }
