@@ -52,10 +52,14 @@ type Redis struct {
 }
 
 // var _config Config
-var _config Configuration
+var _config *Configuration
 var _v *viper.Viper
 
-func init() {
+func InitConfig() {
+	if GetConfig() != nil {
+		return
+	}
+
 	// 读取 config.yaml中文件
 	_v = viper.New()
 	_v.SetConfigName("config")
@@ -78,7 +82,7 @@ func init() {
 	_v.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 
 	// 将配置文件映射到结构体中
-	_config = Configuration{}
+	_config = &Configuration{}
 	if err := _v.Unmarshal(&_config); err != nil {
 		panic(err)
 	}
@@ -88,10 +92,6 @@ func init() {
 	}
 }
 
-//func GetConfig() Config {
-//	return _config
-//}
-
-func GetConfig() Configuration {
+func GetConfig() *Configuration {
 	return _config
 }

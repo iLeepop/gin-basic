@@ -1,7 +1,9 @@
 package logger
 
 import (
+	"context"
 	"gin-basic/config"
+	"gin-basic/internal/pkg/trace"
 	"io"
 	"os"
 	"sync"
@@ -35,7 +37,7 @@ func (h *fileHook) Levels() []logrus.Level {
 	return logrus.AllLevels
 }
 
-func GetLogger() *logrus.Logger {
+func InitLogger() *logrus.Logger {
 	once.Do(func() {
 		cfg := config.GetConfig()
 		Log = logrus.New()
@@ -97,4 +99,15 @@ func GetLogger() *logrus.Logger {
 		Log.SetLevel(level)
 	})
 	return Log
+}
+
+// C 带 trace_id 的 Entry；无 ctx 或未设置 trace 时等同 Log.WithFields(nil)
+func C(ctx context.Context) *logrus.Entry {
+	if ctx == nil {
+		return Log.WithFields(nil)
+	}
+	if tid := trace.FromContext(ctx); tid != "" {
+		return Log.WithField("trace_id", tid)
+	}
+	return Log.WithFields(nil)
 }
